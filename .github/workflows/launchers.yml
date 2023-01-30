@@ -2,7 +2,7 @@ name: Launchers
 on:
   push:
     branches:
-      - main
+      - add-aarch64-launchers
     tags:
       - "v*"
   pull_request:

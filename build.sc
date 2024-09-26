@@ -11,7 +11,7 @@ import mill.scalalib._
 def scalafmtVersion = "3.8.3"
 
 trait ScalafmtNativeImage extends ScalaModule with NativeImage {
-  def scalaVersion = "2.13.13"
+  def scalaVersion = "2.13.15"
 
   def nativeImageClassPath = T{
     val origCp = runClasspath()

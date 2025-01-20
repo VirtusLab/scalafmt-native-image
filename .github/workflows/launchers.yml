@@ -14,11 +14,11 @@ jobs:
       matrix:
         os: [ubuntu-20.04, windows-latest, macos-13]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
-      - uses: coursier/cache-action@v6.3
+      - uses: coursier/cache-action@v6.4
       - uses: coursier/setup-action@v1
         with:
           jvm: 8
@@ -33,7 +33,7 @@ jobs:
           @call ./mill.bat -i "native.copyToArtifacts" artifacts/
         shell: cmd
         if: runner.os == 'Windows'
-      - uses: actions/upload-artifact@v2.2.4
+      - uses: actions/upload-artifact@v4
         with:
           name: launcher-${{ matrix.os }}
           path: artifacts/
@@ -47,11 +47,11 @@ jobs:
   generate-static-launcher:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
-      - uses: coursier/cache-action@v6.3
+      - uses: coursier/cache-action@v6.4
       - uses: coursier/setup-action@v1
         with:
           jvm: 8
@@ -59,7 +59,7 @@ jobs:
           ./mill -i "native-static.writeNativeImageScript" generate.sh "" && \
           ./generate.sh && \
           ./mill -i "native-static.copyToArtifacts" artifacts/
-      - uses: actions/upload-artifact@v2.2.4
+      - uses: actions/upload-artifact@v4
         with:
           name: launcher-${{ matrix.os }}-static
           path: artifacts/
@@ -73,11 +73,11 @@ jobs:
   generate-mostly-static-launcher:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
-      - uses: coursier/cache-action@v6.3
+      - uses: coursier/cache-action@v6.4
       - uses: coursier/setup-action@v1
         with:
           jvm: 8
@@ -85,7 +85,7 @@ jobs:
           ./mill -i "native-mostly-static.writeNativeImageScript" generate.sh "" && \
           ./generate.sh && \
           ./mill -i "native-mostly-static.copyToArtifacts" artifacts/
-      - uses: actions/upload-artifact@v2.2.4
+      - uses: actions/upload-artifact@v4
         with:
           name: launcher-${{ matrix.os }}-mostly-static
           path: artifacts/

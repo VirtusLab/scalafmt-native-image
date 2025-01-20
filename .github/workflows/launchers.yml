@@ -33,7 +33,7 @@ jobs:
           @call ./mill.bat -i "native.copyToArtifacts" artifacts/
         shell: cmd
         if: runner.os == 'Windows'
-      - uses: actions/upload-artifact@v2.2.4
+      - uses: actions/upload-artifact@v4
         with:
           name: launcher-${{ matrix.os }}
           path: artifacts/
@@ -59,7 +59,7 @@ jobs:
           ./mill -i "native-static.writeNativeImageScript" generate.sh "" && \
           ./generate.sh && \
           ./mill -i "native-static.copyToArtifacts" artifacts/
-      - uses: actions/upload-artifact@v2.2.4
+      - uses: actions/upload-artifact@v4
         with:
           name: launcher-${{ matrix.os }}-static
           path: artifacts/
@@ -85,7 +85,7 @@ jobs:
           ./mill -i "native-mostly-static.writeNativeImageScript" generate.sh "" && \
           ./generate.sh && \
           ./mill -i "native-mostly-static.copyToArtifacts" artifacts/
-      - uses: actions/upload-artifact@v2.2.4
+      - uses: actions/upload-artifact@v4
         with:
           name: launcher-${{ matrix.os }}-mostly-static
           path: artifacts/

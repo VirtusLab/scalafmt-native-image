@@ -15,7 +15,7 @@ object Versions {
 
   def jline = "3.25.0"
 
-  def coursier = "2.1.0-M5-18-gfebf9838c"
+  def coursier = "2.1.24"
 }
 
 trait ScalafmtNativeImageModule extends ScalaModule {

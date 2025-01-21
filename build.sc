@@ -9,7 +9,7 @@ import mill._
 import mill.scalalib._
 
 object Versions {
-  def scalafmtVersion = "3.8.3"
+  def scalafmtVersion = "3.8.4"
 
   def scalaVersion = "2.13.16"
 
@@ -47,8 +47,8 @@ trait ScalafmtNativeImage extends ScalafmtNativeImageModule with NativeImage {
     origCp.map { p =>
       val path = p.path
       val name = path.last
-      // stripping the "--verbose" option from the native-image.properties in the scalafmt-cli JAR,
-      // as GraalVM 22.2 doesn't accept this option in properties files anymore
+      // stripping the "--verbose" and other options from the native-image.properties in the scalafmt-cli JAR,
+      // as GraalVM 22.2 doesn't accept these options in properties files anymore
       if (name.startsWith("scalafmt-cli_2.13-") && name.endsWith(".jar")) {
         import java.io.{ByteArrayOutputStream, FileOutputStream, InputStream}
         import java.util.zip.{ZipEntry, ZipFile, ZipOutputStream}
@@ -83,7 +83,13 @@ trait ScalafmtNativeImage extends ScalafmtNativeImageModule with NativeImage {
                     baos.write(buf, 0, read)
                 }
                 val content = new String(baos.toByteArray, "UTF-8")
-                val updatedContent = content.replace("--verbose \\\n", "")
+                val updatedContent =
+                  content
+                    .replace("--verbose \\\n", "")
+                    .replace("--strict-image-heap \\\n", "")
+                    .replace("-march=native \\\n", "")
+                    .replace("-H:+UnlockExperimentalVMOptions \\\n", "")
+                    .replace("-H:-UnlockExperimentalVMOptions", "")
                 zos.write(updatedContent.getBytes("UTF-8"))
               }
               else {

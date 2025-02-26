@@ -1,6 +1,7 @@
-[GraalVM native-image](https://www.graalvm.org/docs/getting-started/#native-images) launchers for [scalafmt](https://scalameta.org/scalafmt).
+_This repository is a legacy dependency of Scala CLI and is no longer maintained.
+`scalafmt` provides native images built with Scala Native since version [3.9.1](https://github.com/scalameta/scalafmt/releases/tag/v3.9.1)._
 
-_Note that Scala Native support in scalafmt is in the works. As soon as it is stable and provides launchers for Linux / macOS / Windows, the repository here should be sunset._
+[GraalVM native-image](https://www.graalvm.org/docs/getting-started/#native-images) launchers for [scalafmt](https://scalameta.org/scalafmt).
 
 These launchers are generated on the scalafmt-native-image CI, and released [here](https://github.com/VirtusLab/scalafmt-native-image/releases/).
 

@@ -7,7 +7,7 @@
 
 set -eu
 
-DEFAULT_SCALAFMT_VERSION="3.8.3"
+DEFAULT_SCALAFMT_VERSION="3.9.2"
 
 SCALAFMT_VERSION=""
 if test -e .scalafmt.conf; then

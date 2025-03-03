@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, windows-latest, macos-13]
+        os: [ubuntu-24.04, windows-latest, macos-13]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,7 +45,7 @@ jobs:
           UPLOAD_GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   generate-static-launcher:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
@@ -71,7 +71,7 @@ jobs:
           UPLOAD_GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   generate-mostly-static-launcher:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:

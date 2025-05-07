@@ -9,7 +9,7 @@ import mill._
 import mill.scalalib._
 
 object Versions {
-  def scalafmtVersion = "3.9.5"
+  def scalafmtVersion = "3.9.6"
 
   def scalaVersion = "2.13.16"
 

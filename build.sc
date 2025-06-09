@@ -13,7 +13,7 @@ object Versions {
 
   def scalaVersion = "2.13.16"
 
-  def jline = "3.25.0"
+  def jline = "3.25.1"
 
   def coursier = "2.1.24"
 }
